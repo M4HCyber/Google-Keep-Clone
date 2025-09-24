@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-inter: Inter, sans-serif;
+  --font-roboto: Roboto, sans-serif;
+
+  /* Colors */
+  --color-bg-grey-50: #f9fafb;
+  --color-bg-surface: #fdfefe;
+  --color-bg-grey-100: #f3f4f6;
+  --color-overlay: #00000001;
+  --color-overlay-dark: #00000060;
+  --color-grey-800-inverse: #1f2937;
+
+  /* Text colors */
+  --color-grey-900-primary: #5f6368;
+  --color-grey-700-secondary: #374151;
+  --color-grey-400-muted: #9ca3af;
+  --color-white-foreground: #ffffff;
+
+  /* Borders */
+  --color-border-subtle: #e5e7eb;
+  --color-border-muted: #9ca3af;
+  --color-border-brand: #ecfdf5;
+
+  /* Icons */
+  --color-icon-default: #374151;
+  --color-icon-disabled: #d1d5db;
+  --color-icon-inverse: #ffffff;
+
+  /* State */
+  --color-state-hover: #f3f4f6;
+  --color-state-active: #e5e7eb;
+  --color-state-disabled: #e5e7eb;
+
+  /* Dark theme */
+  --color-dark-surface: #111827;
+  --color-dark-surface-alt: #1f2937;
+  --color-dark-secondary: #374151;
+  --color-dark-overlay: rgba(0, 0, 0, 0.004);
+  --color-dark-inverse: #f9fafb;
+
+  --color-dark-text-primary: #f9fafb;
+  --color-dark-text-secondary: #d1d5db;
+  --color-dark-text-muted: #4b5563;
+  --color-dark-text-foreground: #ffffff;
+
+  --color-dark-border-subtle: #374151;
+  --color-dark-border-muted: #4b5563;
+
+  --color-dark-icon-default: #d1d5db;
+  --color-dark-icon-disabled: #4b5563;
+  --color-dark-icon-inverse: #111827;
+
+  --color-dark-state-hover: #374151;
+  --color-dark-state-active: #4b5563;
+  --color-dark-state-disabled: #4b5563;
+
+  /* Shadows */
+  --shadow-3p: 0px 2px 4px rgba(237, 241, 245, 0.03);
+  --shadow-5p: 0px 2px 4px rgba(237, 241, 245, 0.05);
+  --shadow-6p: 0px 2px 6px rgba(237, 241, 245, 0.06);
+  --shadow-8p: 0px 4px 8px rgba(237, 241, 245, 0.08);
+  --shadow-10p: 0px 4px 10px rgba(237, 241, 245, 0.1);
+  --shadow-14p: 0px 6px 14px rgba(237, 241, 245, 0.14);
+  --shadow-18p: 0px 8px 18px rgba(237, 241, 245, 0.18);
+
+  /* Dark shadows */
+  --shadow-dark-3p: 0px 2px 4px rgba(10, 13, 18, 0.03);
+  --shadow-dark-5p: 0px 2px 4px rgba(10, 13, 18, 0.05);
+  --shadow-dark-6p: 0px 2px 6px rgba(10, 13, 18, 0.06);
+  --shadow-dark-8p: 0px 4px 8px rgba(10, 13, 18, 0.08);
+  --shadow-dark-10p: 0px 4px 10px rgba(10, 13, 18, 0.1);
+  --shadow-dark-14p: 0px 6px 14px rgba(10, 13, 18, 0.14);
+  --shadow-dark-18p: 0px 8px 18px rgba(10, 13, 18, 0.18);
+
+  /* Border radius */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-round: 50%;
+
+  /* Border width */
+  --border-3: 3px;
+  --border-6: 6px;
+  --border-10: 10px;
+}
+
+body {
+  @apply font-inter text-grey-900-primary;
+}
+
+* {
+  @apply transition  duration-300;
+}
+.active {
+  @apply bg-amber-100;
+}
