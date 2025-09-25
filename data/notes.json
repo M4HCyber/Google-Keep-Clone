@@ -1,0 +1,43 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Learn React",
+      "content": "Go through React docs and build a small project.",
+      "date": "2025-09-24",
+      "important": true
+    },
+    {
+      "id": 2,
+      "title": "Grocery Shopping",
+      "content": "Buy milk, eggs, bread, and fruits.",
+      "date": "2025-09-25",
+      "important": false
+    },
+    {
+      "id": 3,
+      "title": "Workout",
+      "content": "1 hour of gym session: cardio + weights.",
+      "date": "2025-09-26",
+      "important": false
+    },
+    {
+      "id": "1bf8",
+      "title": "Please WOrk",
+      "content": "Did you work",
+      "date": "2025-09-25T10:02:52.686Z"
+    },
+    {
+      "id": "6c49",
+      "title": "Title",
+      "content": "the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog",
+      "date": "2025-09-25T15:55:15.235Z"
+    },
+    {
+      "id": "e4a8",
+      "title": "Time Has Come",
+      "content": "Yes I said it time has come",
+      "date": "2025-09-25T19:35:34.888Z"
+    }
+  ]
+}

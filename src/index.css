@@ -87,7 +87,7 @@
 }
 
 body {
-  @apply font-inter text-grey-900-primary;
+  @apply font-inter text-gray-600;
 }
 
 * {

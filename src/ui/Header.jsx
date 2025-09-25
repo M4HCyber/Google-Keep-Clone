@@ -9,10 +9,9 @@ import InputSearch from "./InputSearch";
 import ButtonIcon from "./ButtonIcon";
 import { BsArrowClockwise } from "react-icons/bs";
 import { CiGrid41 } from "react-icons/ci";
-import useToggleNav from "../hooks/useToggleNav";
 import { useGlobal } from "../context/GlobalContext";
 function Header() {
-  const { isNavOpen, dispatch } = useGlobal();
+  const { dispatch } = useGlobal();
   function handleClick() {
     dispatch({ type: "navOpen" });
   }

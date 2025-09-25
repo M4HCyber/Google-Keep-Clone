@@ -20,6 +20,7 @@ function StyledNavLink({ to, children, icon }) {
   if (!isNavOpen)
     return (
       <NavLink
+        onMouseOver={handleClick}
         onClick={handleClick}
         to={to}
         className="flex w-fit gap-8 items-center rounded-round ml-4 px-4 py-4 hover:bg-bg-grey-100 font-medium text-black text-sm"

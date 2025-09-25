@@ -6,10 +6,16 @@ import {
   HiOutlineTrash,
 } from "react-icons/hi2";
 import StyledNavLink from "./StyledNavLink";
+import { useGlobal } from "../context/GlobalContext";
 
 function NavLinks() {
+  const { isNavOpen } = useGlobal();
   return (
-    <nav className="flex flex-col py-3 hover:shadow-md/30  h-dvh">
+    <nav
+      className={`flex flex-col py-3 ${
+        isNavOpen ? "hover:shadow-md/30" : ""
+      }  h-dvh`}
+    >
       <StyledNavLink to="/notes" icon={<HiOutlineLightBulb />}>
         Notes
       </StyledNavLink>

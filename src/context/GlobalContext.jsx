@@ -1,9 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const GlobalContext = createContext();
 
 const initialState = {
   isNavOpen: true,
+  notesData: [],
+  menuPosition: null,
 };
 
 export default function GlobalProvider({ children }) {
@@ -14,13 +16,63 @@ export default function GlobalProvider({ children }) {
           ...state,
           isNavOpen: state.payload ? true : !state.isNavOpen,
         };
+      case "receivedData":
+        return {
+          ...state,
+          notesData: action.payload,
+        };
+
+      case "addNote":
+        return {
+          ...state,
+          notesData: [...state.notesData, action.payload],
+        };
+
+      case "deleteNote":
+        return {
+          ...state,
+          notesData: state.notesData.filter(
+            (note) => note.id !== state.payload.id
+          ),
+        };
+      case "menuPosition":
+        return {
+          ...state,
+          menuPosition: action.payload,
+        };
     }
   }
 
-  const [{ isNavOpen }, dispatch] = useReducer(reducer, initialState);
+  const [{ isNavOpen, notesData, menuPosition }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
+  function menuHandleClick(e) {
+    const rect = e.target.closest("button").getBoundingClientRect();
+    dispatch({
+      type: "menuPosition",
+      payload: {
+        x: rect.x,
+        y: rect.y + rect.height + 8,
+      },
+    });
+  }
+
+  useEffect(() => {
+    async function fetchNote() {
+      const res = await fetch("http://localhost:800/notes");
+      const data = await res.json();
+      dispatch({ type: "receivedData", payload: data });
+    }
+    fetchNote();
+  }, []);
+
+  console.log(notesData);
   return (
-    <GlobalContext.Provider value={{ isNavOpen, dispatch }}>
+    <GlobalContext.Provider
+      value={{ isNavOpen, dispatch, notesData, menuHandleClick, menuPosition }}
+    >
       {children}
     </GlobalContext.Provider>
   );
