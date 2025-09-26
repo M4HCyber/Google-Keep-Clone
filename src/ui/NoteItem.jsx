@@ -16,7 +16,7 @@ function NoteItem({ note: { title, content } }) {
     <div
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className=" flex h-fit w-[17rem] hover:shadow-md/35 relative flex-row-reverse justify-between border-[1px] py-3 px-5 border-gray-200 rounded-xl"
+      className="relative flex h-fit w-[17rem] flex-row-reverse justify-between rounded-xl border-[1px] border-gray-200 px-5 py-3 hover:shadow-sm/50"
     >
       <span
         className={`${
@@ -36,12 +36,12 @@ function NoteItem({ note: { title, content } }) {
           <BsPin />
         </ButtonIcon>
       </span>
-      <div className=" w-full flex flex-col  justify-between gap-2">
+      <div className="flex w-full flex-col justify-between gap-2">
         <div>
-          <h3 className="font-medium ">{title}</h3>
+          <h3 className="font-medium">{title}</h3>
           <p className="text-sm">{content}</p>
         </div>
-        <div className={`${isHover ? "visible" : "invisible"} flex gap-2 `}>
+        <div className={`${isHover ? "visible" : "invisible"} flex gap-2`}>
           <ButtonIcon size="smaller">
             <AiOutlineFontColors />
           </ButtonIcon>

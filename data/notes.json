@@ -1,21 +1,21 @@
 {
   "notes": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Learn React",
       "content": "Go through React docs and build a small project.",
       "date": "2025-09-24",
       "important": true
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Grocery Shopping",
       "content": "Buy milk, eggs, bread, and fruits.",
       "date": "2025-09-25",
       "important": false
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Workout",
       "content": "1 hour of gym session: cardio + weights.",
       "date": "2025-09-26",
@@ -34,10 +34,10 @@
       "date": "2025-09-25T15:55:15.235Z"
     },
     {
-      "id": "e4a8",
-      "title": "Time Has Come",
-      "content": "Yes I said it time has come",
-      "date": "2025-09-25T19:35:34.888Z"
+      "id": "9080",
+      "title": "TItle Should be here",
+      "content": "Note content here",
+      "date": "2025-09-26T21:49:49.650Z"
     }
   ]
 }
