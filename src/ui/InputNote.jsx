@@ -20,6 +20,7 @@ import { useGlobal } from "../context/GlobalContext";
 import RemindMeMenu from "./RemindMeMenu";
 import { HiOutlineArchive } from "react-icons/hi";
 import MoreMenu from "./MoreMenu";
+import AchieveMenu from "./AchieveMenu";
 
 const initialState = {
   isInputOpen: false,
@@ -33,6 +34,7 @@ const initialState = {
   remindMeMenuOpen: false,
   collaborationMenuOpen: false,
   moreMenuOpen: false,
+  achievedMenuOpen: false,
 };
 function InputNote() {
   const { addNote } = useNoteAPI();
@@ -97,6 +99,12 @@ function InputNote() {
           ...state,
           collaborationMenuOpen: action.payload,
         };
+
+      case "openAchieved":
+        return {
+          ...state,
+          achievedMenuOpen: action.payload,
+        };
     }
   }
   const [
@@ -108,6 +116,7 @@ function InputNote() {
       colorMenuOpen,
       remindMeMenuOpen,
       moreMenuOpen,
+      achievedMenuOpen,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -151,6 +160,7 @@ function InputNote() {
       {colorMenuOpen && <ColorMenu />}
       {remindMeMenuOpen && <RemindMeMenu />}
       {moreMenuOpen && <MoreMenu />}
+      {achievedMenuOpen && <AchieveMenu />}
       <div
         className="flex flex-row-reverse rounded-sm p-3 shadow-md/40"
         onClick={() => {
@@ -255,7 +265,12 @@ function InputNote() {
                   />
                 </ButtonIcon>
 
-                <ButtonIcon size="small" onClick={() => console.log("Clicked")}>
+                <ButtonIcon
+                  size="small"
+                  onClick={() => {
+                    dispatch({ type: "openAchieved", payload: true });
+                  }}
+                >
                   <HiOutlineArchive />
                 </ButtonIcon>
                 <ButtonIcon

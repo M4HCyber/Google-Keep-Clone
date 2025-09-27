@@ -1,11 +1,32 @@
-function ButtonIcon({ size, children, fit, type, disabled, onClick, onBlur }) {
+function ButtonIcon({
+  size,
+  grayed,
+  children,
+  fit,
+  type,
+  disabled,
+  onClick,
+  onBlur,
+}) {
   const style = `cursor-pointer flex rounded-round hover:text-black`;
+
+  if (grayed === "grayed")
+    return (
+      <button
+        disabled={disabled}
+        className={`${style} p-2 text-[1.2rem] hover:bg-gray-700 hover:text-gray-50`}
+        onClick={onClick}
+        onBlur={onBlur}
+      >
+        {children}
+      </button>
+    );
 
   if (size === "small")
     return (
       <button
         disabled={disabled}
-        className={`${style} p-2 hover:bg-gray-100 text-[1.2rem]`}
+        className={`${style} p-2 text-[1.2rem] hover:bg-gray-100`}
         onClick={onClick}
         onBlur={onBlur}
       >
@@ -17,7 +38,7 @@ function ButtonIcon({ size, children, fit, type, disabled, onClick, onBlur }) {
     return (
       <button
         disabled={disabled}
-        className={`${style} h-fit p-2 hover:bg-gray-100 text-[1rem]`}
+        className={`${style} h-fit p-2 text-[1rem] hover:bg-gray-100`}
         onClick={onClick}
         onBlur={onBlur}
       >
@@ -29,7 +50,7 @@ function ButtonIcon({ size, children, fit, type, disabled, onClick, onBlur }) {
     return (
       <button
         disabled={disabled}
-        className={`${style} p-2 hover:bg-gray-100 text-[1rem]`}
+        className={`${style} p-2 text-[1rem] hover:bg-gray-100`}
         onClick={onClick}
         onBlur={onBlur}
       >
@@ -41,7 +62,7 @@ function ButtonIcon({ size, children, fit, type, disabled, onClick, onBlur }) {
     return (
       <button
         disabled={disabled}
-        className={`${style} p-2 hover:bg-gray-300 text-2xl`}
+        className={`${style} p-2 text-2xl hover:bg-gray-300`}
         onClick={onClick}
         onBlur={onBlur}
       >
