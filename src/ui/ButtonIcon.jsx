@@ -7,6 +7,7 @@ function ButtonIcon({
   disabled,
   onClick,
   onBlur,
+  name,
 }) {
   const style = `cursor-pointer flex rounded-round hover:text-black`;
 
@@ -17,6 +18,7 @@ function ButtonIcon({
         className={`${style} p-2 text-[1.2rem] hover:bg-gray-700 hover:text-gray-50`}
         onClick={onClick}
         onBlur={onBlur}
+        name={name}
       >
         {children}
       </button>
@@ -29,6 +31,7 @@ function ButtonIcon({
         className={`${style} p-2 text-[1.2rem] hover:bg-gray-100`}
         onClick={onClick}
         onBlur={onBlur}
+        name={name}
       >
         {children}
       </button>
@@ -41,6 +44,7 @@ function ButtonIcon({
         className={`${style} h-fit p-2 text-[1rem] hover:bg-gray-100`}
         onClick={onClick}
         onBlur={onBlur}
+        name={name}
       >
         {children}
       </button>
@@ -53,6 +57,7 @@ function ButtonIcon({
         className={`${style} p-2 text-[1rem] hover:bg-gray-100`}
         onClick={onClick}
         onBlur={onBlur}
+        name={name}
       >
         {children}
       </button>
@@ -65,6 +70,7 @@ function ButtonIcon({
         className={`${style} p-2 text-2xl hover:bg-gray-300`}
         onClick={onClick}
         onBlur={onBlur}
+        name={name}
       >
         {children}
       </button>
@@ -74,6 +80,7 @@ function ButtonIcon({
       disabled={disabled}
       className={`${style} hover:bg-bg-grey-100 p-3 text-2xl`}
       onClick={onClick}
+      name={name}
       onBlur={onBlur}
     >
       {children}

@@ -72,30 +72,46 @@ const gradientColors = [
     id: crypto.randomUUID(),
   },
 ];
-function ColorMenu() {
+
+function ColorMenu({ dispatch }) {
+  function handleClick(color) {
+    dispatch({ type: "changeBackgroundColor", payload: color });
+  }
   return (
     <Menu>
       <div className="flex gap-2">
-        <ButtonIcon size="small">
+        <ButtonIcon
+          size="small"
+          onClick={() => {
+            handleClick("white");
+          }}
+        >
           <HiOutlineNoSymbol />
         </ButtonIcon>
         {colors.map((color) => (
           <div
+            onClick={() => handleClick(color.color)}
             key={color.id}
-            className={`p-1 hover:border-[2px] cursor-pointer w-8 h-8 rounded-round`}
+            className={`rounded-round h-8 w-8 cursor-pointer p-1 hover:border-[2px]`}
             style={{ backgroundColor: `${color.color}` }}
           ></div>
         ))}
       </div>
-      <div className="border-b-[2px] my-2 border-gray-100"></div>
+      <div className="my-2 border-b-[2px] border-gray-100"></div>
       <div className="flex gap-2">
-        <ButtonIcon size="small">
+        <ButtonIcon
+          size="small"
+          onClick={() => {
+            handleClick("white");
+          }}
+        >
           <HiOutlineNoSymbol />
         </ButtonIcon>
         {gradientColors.map((gradientColor) => (
           <div
+            onClick={() => handleClick(gradientColor.color)}
             key={gradientColor.id}
-            className={`p-1 hover:border-[2px] cursor-pointer w-8 h-8 rounded-round`}
+            className={`rounded-round h-8 w-8 cursor-pointer p-1 hover:border-[2px]`}
             style={{ background: `${gradientColor.color}` }}
           ></div>
         ))}

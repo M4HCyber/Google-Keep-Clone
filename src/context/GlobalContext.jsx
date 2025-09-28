@@ -32,7 +32,7 @@ export default function GlobalProvider({ children }) {
         return {
           ...state,
           notesData: state.notesData.filter(
-            (note) => note.id !== state.payload.id
+            (note) => note.id !== state.payload.id,
           ),
         };
       case "menuPosition":
@@ -45,7 +45,7 @@ export default function GlobalProvider({ children }) {
 
   const [{ isNavOpen, notesData, menuPosition }, dispatch] = useReducer(
     reducer,
-    initialState
+    initialState,
   );
 
   function menuHandleClick(e) {

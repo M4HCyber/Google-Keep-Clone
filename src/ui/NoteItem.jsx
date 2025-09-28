@@ -9,6 +9,7 @@ import {
   HiOutlineUserPlus,
 } from "react-icons/hi2";
 import { useState } from "react";
+import ToolsMenu from "./ToolsMenu";
 
 function NoteItem({ note: { title, content } }) {
   const [isHover, setIsHover] = useState(false);
@@ -42,7 +43,8 @@ function NoteItem({ note: { title, content } }) {
           <p className="text-sm">{content}</p>
         </div>
         <div className={`${isHover ? "visible" : "invisible"} flex gap-2`}>
-          <ButtonIcon size="smaller">
+          <ToolsMenu size="small" />
+          {/* <ButtonIcon size="smaller">
             <AiOutlineFontColors />
           </ButtonIcon>
           <ButtonIcon size="smaller">
@@ -59,7 +61,7 @@ function NoteItem({ note: { title, content } }) {
           </ButtonIcon>
           <ButtonIcon size="smaller">
             <HiOutlineEllipsisVertical />
-          </ButtonIcon>
+          </ButtonIcon> */}
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ function Menu({ children, type }) {
   if (type === "noPadding")
     return (
       <div
-        className={`z-10 rounded-[5px] bg-white absolute w-fit h-fit shadow-sm/35`}
+        className={`absolute z-10 h-fit w-fit rounded-[5px] bg-white shadow-sm/35`}
         style={{ top: `${y}px`, left: `${x}px` }}
       >
         {children}
@@ -17,7 +17,7 @@ function Menu({ children, type }) {
 
   return (
     <div
-      className={`z-10 rounded-[5px] bg-white absolute w-fit h-fit px-3 py-1 shadow-sm/35`}
+      className={`absolute z-10 h-fit w-fit rounded-[5px] bg-white px-3 py-1 shadow-sm/35`}
       style={{ top: `${y}px`, left: `${x}px` }}
     >
       {children}

@@ -7,21 +7,24 @@ import Archive from "./pages/Archive";
 import Bin from "./pages/Bin";
 import AppLayout from "./ui/AppLayout";
 import GlobalContext from "./context/GlobalContext";
+import MenuProvider from "./context/MenuContext";
 function App() {
   return (
     <GlobalContext>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="notes" />} />
-            <Route path="notes" element={<Notes />} />
-            <Route path="reminders" element={<Reminders />} />
-            <Route path="edit-labels" element={<EditLabels />} />
-            <Route path="archive" element={<Archive />} />
-            <Route path="bin" element={<Bin />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <MenuProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route index element={<Navigate replace to="notes" />} />
+              <Route path="notes" element={<Notes />} />
+              <Route path="reminders" element={<Reminders />} />
+              <Route path="edit-labels" element={<EditLabels />} />
+              <Route path="archive" element={<Archive />} />
+              <Route path="bin" element={<Bin />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </MenuProvider>
     </GlobalContext>
   );
 }
