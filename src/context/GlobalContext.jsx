@@ -6,6 +6,7 @@ const initialState = {
   isNavOpen: true,
   notesData: [],
   menuPosition: null,
+  editLabelsOpen: false,
 };
 
 export default function GlobalProvider({ children }) {
@@ -40,13 +41,17 @@ export default function GlobalProvider({ children }) {
           ...state,
           menuPosition: action.payload,
         };
+
+      case "editLabelOpen":
+        return {
+          ...state,
+          editLabelsOpen: !state.editLabelsOpen,
+        };
     }
   }
 
-  const [{ isNavOpen, notesData, menuPosition }, dispatch] = useReducer(
-    reducer,
-    initialState,
-  );
+  const [{ isNavOpen, notesData, menuPosition, editLabelsOpen }, dispatch] =
+    useReducer(reducer, initialState);
 
   function menuHandleClick(e) {
     const rect = e.target.closest("button").getBoundingClientRect();
@@ -68,10 +73,17 @@ export default function GlobalProvider({ children }) {
     fetchNote();
   }, []);
 
-  console.log(notesData);
+  console.log(editLabelsOpen);
   return (
     <GlobalContext.Provider
-      value={{ isNavOpen, dispatch, notesData, menuHandleClick, menuPosition }}
+      value={{
+        isNavOpen,
+        dispatch,
+        notesData,
+        menuHandleClick,
+        menuPosition,
+        editLabelsOpen,
+      }}
     >
       {children}
     </GlobalContext.Provider>

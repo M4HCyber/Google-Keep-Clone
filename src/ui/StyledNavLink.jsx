@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import useToggleNav from "../hooks/useToggleNav";
 import { useGlobal } from "../context/GlobalContext";
 
-function StyledNavLink({ to, children, icon }) {
+function StyledNavLink({ to, children, icon, onClick }) {
   const { isNavOpen, dispatch } = useGlobal();
   function handleClick() {
     dispatch({ type: "navOpen" });
@@ -10,8 +10,9 @@ function StyledNavLink({ to, children, icon }) {
   if (isNavOpen)
     return (
       <NavLink
+        onClick={onClick}
         to={to}
-        className="flex gap-8 items-center rounded-r-xl px-8 py-4 hover:bg-bg-grey-100 font-medium text-black text-sm"
+        className="hover:bg-bg-grey-100 flex items-center gap-8 rounded-r-xl px-8 py-4 text-sm font-medium text-black"
       >
         <span className="text-[1.4rem]">{icon}</span>
         {children}
@@ -21,9 +22,9 @@ function StyledNavLink({ to, children, icon }) {
     return (
       <NavLink
         onMouseOver={handleClick}
-        onClick={handleClick}
+        onClick={(onClick, handleClick)}
         to={to}
-        className="flex w-fit gap-8 items-center rounded-round ml-4 px-4 py-4 hover:bg-bg-grey-100 font-medium text-black text-sm"
+        className="rounded-round hover:bg-bg-grey-100 ml-4 flex w-fit items-center gap-8 px-4 py-4 text-sm font-medium text-black"
       >
         <span className="text-[1.4rem]">{icon}</span>
       </NavLink>

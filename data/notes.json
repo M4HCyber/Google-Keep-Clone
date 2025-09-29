@@ -5,87 +5,24 @@
       "title": "Learn React",
       "content": "Go through React docs and build a small project.",
       "date": "2025-09-24",
-      "important": true
+      "important": true,
+      "reminder": false
     },
     {
       "id": "2",
       "title": "Grocery Shopping",
       "content": "Buy milk, eggs, bread, and fruits.",
       "date": "2025-09-25",
-      "important": false
+      "important": false,
+      "reminder": false
     },
     {
       "id": "3",
       "title": "Workout",
       "content": "1 hour of gym session: cardio + weights.",
       "date": "2025-09-26",
-      "important": false
-    },
-    {
-      "id": "1bf8",
-      "title": "Please WOrk",
-      "content": "Did you work",
-      "date": "2025-09-25T10:02:52.686Z"
-    },
-    {
-      "id": "6c49",
-      "title": "Title",
-      "content": "the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog",
-      "date": "2025-09-25T15:55:15.235Z"
-    },
-    {
-      "id": "9080",
-      "title": "TItle Should be here",
-      "content": "Note content here",
-      "date": "2025-09-26T21:49:49.650Z"
-    },
-    {
-      "id": "e6aa",
-      "title": "asdasd",
-      "content": "as",
-      "date": "2025-09-28T13:54:36.613Z"
-    },
-    {
-      "id": "de93",
-      "title": "Hello",
-      "content": "TIme will come",
-      "date": "2025-09-28T16:01:07.899Z"
-    },
-    {
-      "id": "8dcb",
-      "title": "Hello World",
-      "content": "Time will come InshaAllah",
-      "date": "2025-09-28T16:01:40.291Z"
-    },
-    {
-      "id": "380a",
-      "title": "Hello World",
-      "content": "TIte",
-      "date": "2025-09-28T16:01:56.724Z"
-    },
-    {
-      "id": "4b90",
-      "title": "Time",
-      "content": "SHows",
-      "date": "2025-09-28T16:02:07.342Z"
-    },
-    {
-      "id": "5e64",
-      "title": "TIme",
-      "content": "Has Come",
-      "date": "2025-09-28T16:04:30.164Z"
-    },
-    {
-      "id": "2e70",
-      "title": "Title here",
-      "content": "The note content should be here",
-      "date": "2025-09-28T18:03:46.510Z"
-    },
-    {
-      "id": "db28",
-      "title": "Note Title",
-      "content": "Note Content",
-      "date": "2025-09-28T18:07:53.240Z"
+      "important": false,
+      "reminder": true
     }
   ]
 }
