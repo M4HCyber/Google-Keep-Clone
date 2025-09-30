@@ -1,12 +1,17 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 const GlobalContext = createContext();
-
+const labels = [
+  { id: crypto.randomUUID(), label: "Mahmoud" },
+  { id: crypto.randomUUID(), label: "Mahmoud" },
+];
 const initialState = {
   isNavOpen: true,
   notesData: [],
   menuPosition: null,
   editLabelsOpen: false,
+  newLabels: [],
+  deleteLabelOpen: false,
 };
 
 export default function GlobalProvider({ children }) {
@@ -47,11 +52,26 @@ export default function GlobalProvider({ children }) {
           ...state,
           editLabelsOpen: !state.editLabelsOpen,
         };
+      case "addlabel":
+        return {
+          ...state,
+          newLabels: {
+            ...state.newLabels,
+            ...action.payload,
+          },
+        };
+      case "deleteLabelAlert":
+        return {
+          ...state,
+          deleteLabelOpen: action.payload,
+        };
     }
   }
 
-  const [{ isNavOpen, notesData, menuPosition, editLabelsOpen }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { isNavOpen, notesData, menuPosition, editLabelsOpen, deleteLabelOpen },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   function menuHandleClick(e) {
     const rect = e.target.closest("button").getBoundingClientRect();
@@ -83,6 +103,8 @@ export default function GlobalProvider({ children }) {
         menuHandleClick,
         menuPosition,
         editLabelsOpen,
+        deleteLabelOpen,
+        labels,
       }}
     >
       {children}

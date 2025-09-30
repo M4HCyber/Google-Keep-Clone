@@ -1,4 +1,15 @@
-function Button({ children, onClick, disabled, colored }) {
+function Button({ children, onClick, disabled, colored, color }) {
+  if (color)
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={disabled}
+        className={`cursor-pointer rounded-[5px] px-5 py-1 text-sm ${color} hover:bg-gray-100`}
+      >
+        {children}
+      </button>
+    );
   if (colored === "colored")
     return (
       <button
