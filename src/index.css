@@ -87,7 +87,7 @@
 }
 
 body {
-  @apply font-inter text-gray-600;
+  @apply font-inter overflow-hidden text-gray-600;
 }
 
 button:disabled {

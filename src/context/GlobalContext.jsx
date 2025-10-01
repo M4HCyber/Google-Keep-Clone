@@ -1,17 +1,15 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 const GlobalContext = createContext();
-const labels = [
-  { id: crypto.randomUUID(), label: "Mahmoud" },
-  { id: crypto.randomUUID(), label: "Mahmoud" },
-];
 const initialState = {
+  searchQuery: "",
   isNavOpen: true,
   notesData: [],
   menuPosition: null,
   editLabelsOpen: false,
+  labelsData: [],
   newLabels: [],
-  deleteLabelOpen: false,
+  deleteLabelOpen: "",
 };
 
 export default function GlobalProvider({ children }) {
@@ -20,7 +18,7 @@ export default function GlobalProvider({ children }) {
       case "navOpen":
         return {
           ...state,
-          isNavOpen: state.payload ? true : !state.isNavOpen,
+          isNavOpen: action.payload ?? !state.isNavOpen,
         };
       case "receivedData":
         return {
@@ -52,24 +50,48 @@ export default function GlobalProvider({ children }) {
           ...state,
           editLabelsOpen: !state.editLabelsOpen,
         };
+      case "receivedLabel":
+        return {
+          ...state,
+          labelsData: action.payload,
+        };
       case "addlabel":
         return {
           ...state,
-          newLabels: {
-            ...state.newLabels,
-            ...action.payload,
-          },
+          newLabels: [...state.newLabels, ...action.payload],
+        };
+
+      case "daleteLabel":
+        return {
+          ...state,
+          newLabels: state.newLabels.filter(
+            (label) => label.id !== action.payload,
+          ),
         };
       case "deleteLabelAlert":
         return {
           ...state,
           deleteLabelOpen: action.payload,
         };
+      case "search":
+        return {
+          ...state,
+          searchQuery: action.payload,
+        };
     }
   }
 
   const [
-    { isNavOpen, notesData, menuPosition, editLabelsOpen, deleteLabelOpen },
+    {
+      isNavOpen,
+      notesData,
+      menuPosition,
+      editLabelsOpen,
+      deleteLabelOpen,
+      newLabels,
+      labelsData,
+      searchQuery,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -85,15 +107,21 @@ export default function GlobalProvider({ children }) {
   }
 
   useEffect(() => {
+    const URL = "http://localhost:800/";
     async function fetchNote() {
-      const res = await fetch("http://localhost:800/notes");
+      const res = await fetch(`${URL}notes`);
       const data = await res.json();
       dispatch({ type: "receivedData", payload: data });
     }
     fetchNote();
-  }, []);
 
-  console.log(editLabelsOpen);
+    async function fetchLabel() {
+      const res = await fetch(`${URL}labels`);
+      const data = await res.json();
+      dispatch({ type: "receivedLabel", payload: data });
+    }
+    fetchLabel();
+  }, []);
   return (
     <GlobalContext.Provider
       value={{
@@ -104,7 +132,9 @@ export default function GlobalProvider({ children }) {
         menuPosition,
         editLabelsOpen,
         deleteLabelOpen,
-        labels,
+        newLabels,
+        labelsData,
+        searchQuery,
       }}
     >
       {children}

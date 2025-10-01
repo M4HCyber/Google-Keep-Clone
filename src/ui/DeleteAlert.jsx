@@ -1,11 +1,15 @@
 import { useGlobal } from "../context/GlobalContext";
+import { useLabelAPI } from "../utils/useLabelAPI";
 import Button from "./Button";
 import Overlay from "./Overlay";
 
 function DeleteAlert({ children }) {
-  const { dispatch, labels, deleteLabelOpen } = useGlobal();
+  const { dispatch, deleteLabelOpen } = useGlobal();
+  const { deleteLabel } = useLabelAPI();
   function handleDelete(id) {
-    labels.filter((label) => id === label.id);
+    console.log(deleteLabel(id));
+    // dispatch({ type: "deleteLabel", payload: id });
+    dispatch({ type: "deleteLabelAlert", payload: false });
   }
 
   return (

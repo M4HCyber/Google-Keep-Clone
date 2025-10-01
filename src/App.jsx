@@ -18,6 +18,7 @@ function App() {
               <Route index element={<Navigate replace to="notes" />} />
               <Route path="notes" element={<Notes />} />
               <Route path="reminders" element={<Reminders />} />
+              <Route path="edit-labels/:label" element={<EditLabels />} />
               <Route path="edit-labels" element={<EditLabels />} />
               <Route path="archive" element={<Archive />} />
               <Route path="bin" element={<Bin />} />

@@ -19,7 +19,9 @@ function AppLayout() {
       <Header />
       <MainLayout>
         <NavLinks />
-        <Outlet />
+        <div className="h-dvh overflow-auto">
+          <Outlet />
+        </div>
       </MainLayout>
     </div>
   );

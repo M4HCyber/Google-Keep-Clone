@@ -169,8 +169,7 @@ export default function MenuProvider({ children }) {
   // function handleDelete(id) {
   //   setNote((note) => note.filter((n) => n.id !== id));
   // }
-  console.log(fontSize);
-  console.log(fontDecoration);
+
   const fileInputRef = useRef(null);
 
   return (

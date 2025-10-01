@@ -34,7 +34,6 @@ function InputNote() {
     fontSize,
     fontDecoration,
   } = useMenu();
-  console.log(isInputOpen);
   if (collaborationMenuOpen) return <CollaboratorMenu dispatch={dispatch} />;
   return (
     <>

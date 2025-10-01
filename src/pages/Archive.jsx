@@ -4,7 +4,7 @@ import { HiArchiveBox } from "react-icons/hi2";
 
 function Archive() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex h-dvh items-center justify-center">
       <Empty icon={<HiArchiveBox />}>Your Achieved notes appear here</Empty>
     </div>
   );

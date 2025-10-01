@@ -5,13 +5,12 @@ import {
   HiOutlinePencil,
   HiOutlineTag,
   HiOutlineTrash,
-  HiTag,
 } from "react-icons/hi2";
 import StyledNavLink from "./StyledNavLink";
 import { useGlobal } from "../context/GlobalContext";
 
 function NavLinks({ onClick }) {
-  const { isNavOpen, dispatch, labels } = useGlobal();
+  const { isNavOpen, dispatch, labelsData } = useGlobal();
   return (
     <nav
       className={`flex flex-col py-3 ${
@@ -24,7 +23,7 @@ function NavLinks({ onClick }) {
       <StyledNavLink to="/reminders" icon={<HiOutlineBell />}>
         Reminders
       </StyledNavLink>
-      {labels.map((label) => (
+      {labelsData?.map((label) => (
         <StyledNavLink
           key={label.id}
           to={`/${label.label}`}

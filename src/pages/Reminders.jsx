@@ -8,7 +8,7 @@ function Reminders() {
   const { notesData } = useGlobal();
   return (
     <div
-      className={`flex flex-col px-10 py-10 text-gray-700 ${
+      className={`flex h-dvh flex-col px-10 py-10 text-gray-700 ${
         !notesData ? "gap-20" : "gap-5"
       }`}
     >

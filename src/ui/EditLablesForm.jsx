@@ -13,16 +13,19 @@ import Button from "./Button";
 import { useRef, useState } from "react";
 import { HiChartSquareBar } from "react-icons/hi";
 import { useGlobal } from "../context/GlobalContext";
+import { useLabelAPI } from "../utils/useLabelAPI";
 
 function EditLablesForm() {
+  const { addLabel } = useLabelAPI();
   const [isNewLabel, setIsNewLabel] = useState({
     id: crypto.randomUUID(),
     label: "",
   });
-  const { dispatch, labels } = useGlobal();
-  const [label, setLabel] = useState(labels);
+  const { dispatch, newLabels, labelsData } = useGlobal();
+  const [label, setLabel] = useState(newLabels);
   const [isClicked, setIsClicked] = useState(false);
   const [isClickedLabel, setIsClickedLabel] = useState(false);
+  // const [addedLabelValue, setAddedLabelValue] = useState();
   const ref = useRef(null);
   function handleChange(e) {
     const { name, value } = e.target;
@@ -36,12 +39,18 @@ function EditLablesForm() {
 
   function handleClick() {
     if (!isNewLabel.label) return;
-    console.log(isNewLabel);
     setIsNewLabel({
       id: crypto.randomUUID(),
       label: "",
     });
     setLabel((curr) => [...curr, isNewLabel]);
+  }
+
+  function handleDone() {
+    dispatch({ type: "editLabelOpen" });
+    // console.log(label.map((l) => l));
+    if (!isNewLabel.label) return;
+    addLabel([...label]);
   }
 
   return (
@@ -68,6 +77,37 @@ function EditLablesForm() {
             <HiCheck />
           </ButtonIcon>
         </div>
+
+        {labelsData.map((label) => (
+          <div
+            className="flex items-center justify-between gap-3 px-5 py-1"
+            key={label.id}
+            onMouseOver={() => setIsClickedLabel(true)}
+            onMouseOut={() => setIsClickedLabel(false)}
+          >
+            <ButtonIcon size="smaller">
+              {isClickedLabel ? (
+                <HiTrash
+                  onClick={() =>
+                    dispatch({ type: "deleteLabelAlert", payload: label.id })
+                  }
+                />
+              ) : (
+                <HiTag />
+              )}
+            </ButtonIcon>
+            <input
+              type="text"
+              value={label.label}
+              onChange={(e) => setAddedLabelValue(e.target.value)}
+              className="border-gray-300 py-1 outline-none focus:border-b-[1px]"
+              ref={ref}
+            />
+            <ButtonIcon size="smaller" onClick={() => ref.current.select()}>
+              <HiPencil />
+            </ButtonIcon>
+          </div>
+        ))}
         {label.map((label) => (
           <div
             className="flex items-center justify-between gap-3 px-5 py-1"
@@ -89,6 +129,7 @@ function EditLablesForm() {
             <input
               type="text"
               value={label.label}
+              // onChange={(e) => setAddedLabelValue(e.target.value)}
               className="border-gray-300 py-1 outline-none focus:border-b-[1px]"
               ref={ref}
             />
@@ -98,7 +139,7 @@ function EditLablesForm() {
           </div>
         ))}
         <div className="flex justify-end border-t-[1px] border-gray-200 px-5 py-4">
-          <Button>Done</Button>
+          <Button onClick={handleDone}>Done</Button>
         </div>
       </div>
     </Overlay>
