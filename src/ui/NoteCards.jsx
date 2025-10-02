@@ -5,7 +5,7 @@ import { HiEmojiSad } from "react-icons/hi";
 
 function NoteCards({ type }) {
   // const {searchQuery} = useGlobal();
-  const { notesData, searchQuery } = useGlobal();
+  const { notesData, searchQuery, noteLayoutColumn } = useGlobal();
   let filteredNote;
 
   if (searchQuery.length <= 0) filteredNote = notesData;
@@ -35,7 +35,9 @@ function NoteCards({ type }) {
       </div>
     );
   return (
-    <div className="grid grid-cols-4 gap-5">
+    <div
+      className={`grid ${noteLayoutColumn ? "grid-cols-1" : "grid-cols-4"} gap-5`}
+    >
       {filteredNote.map((note) => (
         <NoteItem key={note.id} note={note} />
       ))}

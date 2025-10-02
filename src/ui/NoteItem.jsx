@@ -10,14 +10,16 @@ import {
 } from "react-icons/hi2";
 import { useState } from "react";
 import ToolsMenu from "./ToolsMenu";
+import { useGlobal } from "../context/GlobalContext";
 
 function NoteItem({ note: { title, content } }) {
+  const { noteLayoutColumn } = useGlobal();
   const [isHover, setIsHover] = useState(false);
   return (
     <div
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className="relative flex h-fit w-[17rem] flex-row-reverse justify-between rounded-xl border-[1px] border-gray-200 px-5 py-3 hover:shadow-sm/50"
+      className={`relative flex h-fit ${noteLayoutColumn ? "m-auto w-[60%]" : "w-[17rem]"} flex-row-reverse justify-between rounded-xl border-[1px] border-gray-200 px-5 py-3 hover:shadow-sm/50`}
     >
       <span
         className={`${

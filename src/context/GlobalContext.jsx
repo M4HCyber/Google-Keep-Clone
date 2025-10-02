@@ -10,6 +10,7 @@ const initialState = {
   labelsData: [],
   newLabels: [],
   deleteLabelOpen: "",
+  noteLayoutColumn: false,
 };
 
 export default function GlobalProvider({ children }) {
@@ -78,6 +79,11 @@ export default function GlobalProvider({ children }) {
           ...state,
           searchQuery: action.payload,
         };
+      case "noteLayout":
+        return {
+          ...state,
+          noteLayoutColumn: !state.noteLayoutColumn,
+        };
     }
   }
 
@@ -91,6 +97,7 @@ export default function GlobalProvider({ children }) {
       newLabels,
       labelsData,
       searchQuery,
+      noteLayoutColumn,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -135,6 +142,7 @@ export default function GlobalProvider({ children }) {
         newLabels,
         labelsData,
         searchQuery,
+        noteLayoutColumn,
       }}
     >
       {children}
