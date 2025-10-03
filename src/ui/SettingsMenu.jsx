@@ -1,7 +1,11 @@
 import Menu from "./Menu";
 
 function SettingsMenu() {
-  return <Menu>Setting</Menu>;
+  return (
+    <Menu>
+      <div>Settings</div>
+    </Menu>
+  );
 }
 
 export default SettingsMenu;
