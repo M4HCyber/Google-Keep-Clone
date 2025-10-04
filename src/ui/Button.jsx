@@ -1,4 +1,14 @@
-function Button({ children, onClick, disabled, colored, color }) {
+function Button({
+  children,
+  bgColor,
+  textColor,
+  border,
+  onClick,
+  disabled,
+  colored,
+  color,
+  borderColor,
+}) {
   if (color)
     return (
       <button
@@ -6,6 +16,17 @@ function Button({ children, onClick, disabled, colored, color }) {
         onClick={onClick}
         disabled={disabled}
         className={`cursor-pointer rounded-[5px] px-5 py-1 text-sm ${color} hover:bg-gray-100`}
+      >
+        {children}
+      </button>
+    );
+  if (bgColor || border || textColor || borderColor)
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={disabled}
+        className={`cursor-pointer rounded-3xl px-5 py-2 text-sm ${bgColor} text-${textColor} ${border} ${borderColor} hover:bg-gray-100`}
       >
         {children}
       </button>

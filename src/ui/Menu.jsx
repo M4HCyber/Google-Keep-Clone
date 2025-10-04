@@ -1,9 +1,18 @@
 import { useGlobal } from "../context/GlobalContext";
-
 function Menu({ children, type }) {
   const { menuPosition } = useGlobal();
   const x = Math.round(menuPosition?.x);
   const y = Math.round(menuPosition?.y);
+  if (type === "googleProfile")
+    return (
+      <div
+        className={`absolute z-10 w-fit rounded-2xl bg-gray-200 shadow-sm/35`}
+        style={{ top: `${y}px`, right: `${x}px` }}
+      >
+        <div></div>
+        {children}
+      </div>
+    );
   if (type === "google")
     return (
       <div

@@ -18,6 +18,7 @@ function Header() {
     settingsOpenMenu,
     dispatch: dispatchMenu,
     googleAppsOpen,
+    profileMenuOpen,
   } = useMenu();
 
   // stable handlers
@@ -47,12 +48,21 @@ function Header() {
     },
     [menuHandleClick, dispatchMenu],
   );
+  const handleClickProfile = useCallback(
+    (e) => {
+      // menuHandleClick(e);
+      menuHandleClickApps(e);
+      dispatchMenu({ type: "profileMenuOpen" });
+      dispatchMenu({ type: "googleAppsOpen" });
+    },
+    [menuHandleClick, dispatchMenu],
+  );
 
   return (
     <>
       {settingsOpenMenu && <SettingsMenu />}
       {googleAppsOpen && <GoogleAppsMenu />}
-      {/* {<ProfileMenu />} */}
+      {profileMenuOpen && <ProfileMenu />}
       <header className="border-border-subtle flex justify-between border-b-[1px] px-5 py-2">
         <div className="flex w-full gap-16">
           <div className="flex items-center gap-3">
@@ -85,13 +95,16 @@ function Header() {
             <ButtonIcon>
               <BsGrid3X3GapFill />
             </ButtonIcon>
-            <div className="rounded-round h-[40px] w-[40px] cursor-pointer p-[3px] hover:bg-gray-100">
+            <button
+              onClick={handleClickProfile}
+              className="rounded-round h-[40px] w-[40px] cursor-pointer p-[3px] hover:bg-gray-100"
+            >
               <img
                 src="img/square-passport.png"
                 alt=""
                 className="rounded-round"
               />
-            </div>
+            </button>
           </div>
         </div>
       </header>

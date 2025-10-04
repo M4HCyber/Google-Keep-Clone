@@ -26,6 +26,8 @@ const initialState = {
   backgroundColor: "",
   settingsOpenMenu: false,
   googleAppsOpen: false,
+  showMoreAccounts: false,
+  profileMenuOpen: false,
 };
 export default function MenuProvider({ children }) {
   const { addNote } = useNoteAPI();
@@ -132,6 +134,16 @@ export default function MenuProvider({ children }) {
           ...state,
           googleAppsOpen: !state.googleAppsOpen,
         };
+      case "showMoreAccounts":
+        return {
+          ...state,
+          showMoreAccounts: !state.showMoreAccounts,
+        };
+      case "profileMenuOpen":
+        return {
+          ...state,
+          profileMenuOpen: !state.profileMenuOpen,
+        };
     }
   }
   const [
@@ -150,6 +162,8 @@ export default function MenuProvider({ children }) {
       backgroundColor,
       settingsOpenMenu,
       googleAppsOpen,
+      showMoreAccounts,
+      profileMenuOpen,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -209,6 +223,8 @@ export default function MenuProvider({ children }) {
         backgroundColor,
         settingsOpenMenu,
         googleAppsOpen,
+        showMoreAccounts,
+        profileMenuOpen,
       }}
     >
       {children}
