@@ -11,6 +11,7 @@ const initialState = {
   newLabels: [],
   deleteLabelOpen: "",
   noteLayoutColumn: false,
+  settingsOpen: false,
 };
 
 export default function GlobalProvider({ children }) {
@@ -112,6 +113,16 @@ export default function GlobalProvider({ children }) {
       },
     });
   }
+  function menuHandleClickApps(e) {
+    const rect = e.target.closest("button").getBoundingClientRect();
+    dispatch({
+      type: "menuPosition",
+      payload: {
+        x: 20,
+        y: rect.y + rect.height + 8,
+      },
+    });
+  }
 
   useEffect(() => {
     const URL = "http://localhost:800/";
@@ -143,6 +154,7 @@ export default function GlobalProvider({ children }) {
         labelsData,
         searchQuery,
         noteLayoutColumn,
+        menuHandleClickApps,
       }}
     >
       {children}

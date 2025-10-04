@@ -24,6 +24,8 @@ const initialState = {
     underline: false,
   },
   backgroundColor: "",
+  settingsOpenMenu: false,
+  googleAppsOpen: false,
 };
 export default function MenuProvider({ children }) {
   const { addNote } = useNoteAPI();
@@ -119,6 +121,17 @@ export default function MenuProvider({ children }) {
           ...state,
           backgroundColor: action.payload,
         };
+
+      case "settingOpen":
+        return {
+          ...state,
+          settingsOpenMenu: !state.settingsOpenMenu,
+        };
+      case "googleAppsOpen":
+        return {
+          ...state,
+          googleAppsOpen: !state.googleAppsOpen,
+        };
     }
   }
   const [
@@ -135,6 +148,8 @@ export default function MenuProvider({ children }) {
       fontSize,
       fontDecoration,
       backgroundColor,
+      settingsOpenMenu,
+      googleAppsOpen,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -192,6 +207,8 @@ export default function MenuProvider({ children }) {
         fontSize,
         fontDecoration,
         backgroundColor,
+        settingsOpenMenu,
+        googleAppsOpen,
       }}
     >
       {children}
